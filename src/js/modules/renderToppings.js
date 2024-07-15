@@ -17,9 +17,7 @@ export const renderToppings = async () => {
                 type="checkbox"
                 name="topping"
                 value="${enName}" />
-    <label class="toppings__label" for="${enName}">${ruToppings[
-      i
-    ][0].toUpperCase()}${ruToppings[i].slice(1).toLowerCase()}</label>    
+    <label class="toppings__label" for="${enName}">${ruToppings[i][0].toUpperCase()}${ruToppings[i].slice(1).toLowerCase()}</label>    
     `;
     return item;
   });
@@ -44,5 +42,14 @@ export const renderToppings = async () => {
     }
 
     renderPizzas(checkedToppings);
+
+    if (checkedToppings.length) {
+      toppingsList.append(itemReset);
+    }
+  });
+
+  btnReset.addEventListener('click', () => {
+    itemReset.remove();
+    toppingsForm.reset();
   });
 };
